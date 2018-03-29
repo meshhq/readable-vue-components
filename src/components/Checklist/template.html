@@ -1,0 +1,32 @@
+<div class='container is-fluid'>
+  <div class='section'>
+    <div class='checklist-box'>
+      <!-- Header -->
+      <h1>Checklist</h1>
+
+      <!-- New Item Input -->
+      <b-field>
+        <b-input
+          v-model='newItem'
+          expanded
+          @keyup.native.enter='addItem'
+        />
+        <p class='control'>
+          <button class='button is-primary' @click='addItem'>
+            Add
+          </button>
+        </p>
+      </b-field>
+
+      <hr v-show='checklistItems.length > 0'/>
+
+      <!-- Checklist Items -->
+      <ChecklistItem 
+        v-for='item in checklistItems' 
+        :key='item.key'
+        :itemTitle='item.title'
+        :indexKey='item.key'
+      />
+    </div>
+  </div>
+</div>

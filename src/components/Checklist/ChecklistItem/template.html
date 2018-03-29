@@ -1,0 +1,24 @@
+<b-field>
+  <b-checkbox v-model='itemChecked'/>
+  <span
+    class='item-static'
+    :class="{'item-checked': itemChecked}"
+    v-show='!editingItem'
+    @dblclick='editItem'
+  >
+  {{itemTitleDone}}
+  </span>
+  <b-input 
+    v-model='itemTitleEdit'
+    v-show='editingItem'
+    :disabled='itemChecked'
+    @blur="doneEdit"
+    @keyup.native.enter="doneEdit"
+    @keyup.native.esc="cancelEdit"
+    expanded/>
+  <p class='control'>
+    <button class='button is-danger' @click='deleteItem'>
+      <b-icon icon='close'/>
+    </button>
+  </p>
+</b-field>
